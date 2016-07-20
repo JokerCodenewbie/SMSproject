@@ -16,3 +16,7 @@ foreach($age as $x=>$x_value)
     echo "Key=" . $x . ", Value=" . $x_value;
     echo "\n";
 }
+
+$str = "/tmp////";
+echo rtrim($str,'\\/');
+echo dirname(__FILE__);
