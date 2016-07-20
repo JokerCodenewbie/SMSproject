@@ -11,7 +11,7 @@ class TopClient
 
 	public $gatewayUrl = "http://gw.api.taobao.com/router/rest";
 
-	public $format = "xml";
+	public $format;
 
 	public $connectTimeout;
 
@@ -26,9 +26,10 @@ class TopClient
 
 	protected $sdkVersion = "top-sdk-php-20151012";
 
-	public function __construct($appkey = "",$secretKey = ""){
+	public function __construct($appkey = "",$secretKey = "",$format = ""){
 		$this->appkey = $appkey;
 		$this->secretKey = $secretKey ;
+        $this->format = $format;
 	}
 
 	protected function generateSign($params)

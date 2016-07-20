@@ -13,10 +13,11 @@ require "./alidayu_customize/RequestCheckUtil.php";
 require "./alidayu_customize/ResultSet.php";
 require "./alidayu_customize/TopClient.php";
 require "./alidayu_customize/TopLogger.php";
+require "./alidayu_customize/AliSMSSend.php";
 
 
 date_default_timezone_set('Asia/Shanghai');
-$appkey = '23408281';
+/*$appkey = '23408281';
 $secret = '818c7a628bc558c747bba5aa92617293';
 
 $c = new TopClient;
@@ -31,4 +32,14 @@ $req->setSmsParam("{\"name\":\"林先生\",\"message\":\"请尽快查收消息�
 $req->setRecNum("18825146518");
 $req->setSmsTemplateCode("SMS_12520739");
 $resp = $c->execute($req);
-echo var_dump($resp);
+echo var_dump($resp);*/
+
+$batch1 = array('18825146518','18825146518','18825146518','18825146518');
+$batch2 = "18825146518,18825146518,18825146518,18825146518,18825146518,18825146518";
+$one = "18825146518";
+$message = "{\"name\":\"林先生\",\"message\":\"请尽快查收消息。\",\"time\":\"2016-07-20\"}";
+$message1 = '{"name":"林先生","message":"请尽快查收消息","time":"2016-07-20"}';
+$message2 = array("name"=>"林先生","message"=>"请尽快查收消息","time"=>"2016-07-20");
+$s = new AliSMSSend($batch2,$message1);
+$result = $s->SendMessage();
+echo var_dump($result);
